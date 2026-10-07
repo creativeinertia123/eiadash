@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#101318" />
+    <meta name="description" content="CC — live US petroleum balance and weekly oil analysis." />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>CC</title>
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="/" aria-label="CC home">
+          <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span class="brand-name">CC</span>
+        </a>
+        <div class="header-center">
+          <span class="terminal-tag">ENERGY / WPSR</span>
+          <span class="header-divider"></span>
+          <span class="header-context">US PETROLEUM</span>
+        </div>
+        <div class="header-tools">
+          <div class="live-state" id="live-state" aria-live="polite"><span class="live-dot"></span><span id="live-label">CONNECTING</span></div>
+          <button class="refresh-button" id="refresh-button" type="button"><span class="refresh-icon" aria-hidden="true">↻</span><span>Refresh</span></button>
+        </div>
+      </header>
+
+      <div class="workspace">
+        <aside class="rail" aria-label="Sections">
+          <span class="rail-label">VIEW</span>
+          <a class="rail-link active" href="/#overview" data-section="overview"><span class="rail-key">01</span><span>Balance</span></a>
+          <a class="rail-link" href="/#stocks" data-section="stocks"><span class="rail-key">02</span><span>Stocks</span></a>
+          <a class="rail-link" href="/#refining" data-section="refining"><span class="rail-key">03</span><span>Refining</span></a>
+          <a class="rail-link" href="/#demand" data-section="demand"><span class="rail-key">04</span><span>Demand</span></a>
+          <a class="rail-link" href="/#production" data-section="production"><span class="rail-key">05</span><span>Production</span></a>
+          <a class="rail-link" href="/#trade" data-section="trade"><span class="rail-key">06</span><span>Trade</span></a>
+          <a class="rail-link" href="/#analysis" data-section="analysis"><span class="rail-key">07</span><span>Analysis</span></a>
+          <div class="rail-spacer"></div>
+          <a class="rail-link method-link" href="/methodology"><span class="rail-key">M</span><span>Method</span></a>
+          <div class="rail-foot"><span class="rail-foot-line"></span><span>EIA / API V2</span></div>
+        </aside>
+
+        <main class="main-stage">
+          <section id="dashboard-view" class="dashboard-view">
+            <div class="page-head" id="overview">
+              <div>
+                <div class="eyebrow"><span class="eyebrow-bar"></span><span>WEEKLY PETROLEUM</span><span class="eyebrow-sep">/</span><span>UNITED STATES</span></div>
+                <h1>US Oil Balance</h1>
+                <p class="page-subtitle">EIA WEEKLY DATA <span class="subtitle-dot">·</span> <span id="period-label">LOADING</span></p>
+              </div>
+              <div class="head-meta">
+                <span class="meta-label">DATA WINDOW</span>
+                <span class="meta-value" id="history-label">12 YEARS</span>
+                <span class="meta-label meta-spaced">LAST CHECK</span>
+                <span class="meta-value" id="updated-label">PENDING</span>
+              </div>
+            </div>
+
+            <div class="status-strip" id="status-strip" role="status" aria-live="polite">
+              <span class="status-mark"></span><span id="status-text">Loading EIA</span>
+            </div>
+
+            <section class="snapshot" aria-labelledby="snapshot-title">
+              <div class="section-heading compact-heading"><div><span class="section-index">A1</span><h2 id="snapshot-title">Market snapshot</h2></div><span class="heading-note">LATEST RELEASE</span></div>
+              <div class="snapshot-grid" id="snapshot-grid">
+                <div class="snapshot-cell skeleton"><span class="skeleton-line"></span><span class="skeleton-number"></span><span class="skeleton-foot"></span></div>
+                <div class="snapshot-cell skeleton"><span class="skeleton-line"></span><span class="skeleton-number"></span><span class="skeleton-foot"></span></div>
+                <div class="snapshot-cell skeleton"><span class="skeleton-line"></span><span class="skeleton-number"></span><span class="skeleton-foot"></span></div>
+                <div class="snapshot-cell skeleton"><span class="skeleton-line"></span><span class="skeleton-number"></span><span class="skeleton-foot"></span></div>
+              </div>
+            </section>
+
+            <section class="metrics-section" aria-labelledby="metrics-title">
+              <div class="section-heading"><div><span class="section-index">A2</span><h2 id="metrics-title">Weekly metrics</h2></div><span class="heading-note">17 SERIES</span></div>
+              <div class="table-wrap">
+                <table class="metrics-table" id="metrics-table">
+                  <thead><tr><th scope="col">Series</th><th scope="col">Latest</th><th scope="col">W/W</th><th scope="col">Y/Y</th><th scope="col">5Y gap</th><th scope="col" aria-label="Recent trend">Trend</th></tr></thead>
+                  <tbody id="metrics-body"><tr><td colspan="6" class="empty-cell">Awaiting data</td></tr></tbody>
+                </table>
+              </div>
+            </section>
+
+            <section class="charts-section" aria-labelledby="charts-title">
+              <div class="section-heading"><div><span class="section-index">A3</span><h2 id="charts-title">Seasonal curves</h2></div><div class="chart-key"><span><i class="key-current"></i><span id="current-year-key">CURRENT YEAR</span></span><span><i class="key-average"></i>5Y AVG</span><span><i class="key-history"></i>HISTORY</span></div></div>
+              <div id="chart-groups"></div>
+            </section>
+
+            <section class="analysis-section" id="analysis" aria-labelledby="analysis-title">
+              <div class="section-heading"><div><span class="section-index">A4</span><h2 id="analysis-title">Desk analysis</h2></div><div class="analysis-meta"><span class="analysis-status" id="analysis-status">AUTO READ</span><span class="analysis-period" id="analysis-period"></span></div></div>
+              <div class="analysis-frame"><div class="analysis-rule"></div><div class="analysis-content" id="analysis-content"><p class="analysis-placeholder">Analysis follows data.</p></div></div>
+            </section>
+
+            <footer class="page-footer"><span>CC / EIA WPSR</span><span>Refreshes automatically</span><span>Server-side providers</span></footer>
+          </section>
+
+          <section id="methodology-view" class="methodology-view" hidden>
+            <div class="page-head method-head">
+              <div><div class="eyebrow"><span class="eyebrow-bar"></span><span>REFERENCE</span><span class="eyebrow-sep">/</span><span>WPSR FRAMEWORK</span></div><h1>Methodology</h1><p class="page-subtitle">SUPPLY / DEMAND / BALANCE</p></div>
+              <div class="head-meta"><a class="back-link" href="/">← CC TERMINAL</a></div>
+            </div>
+            <article class="methodology-content" id="methodology-content"><p class="analysis-placeholder">Loading methodology</p></article>
+            <footer class="page-footer"><span>CC / RESEARCH NOTES</span><a href="/">Return to dashboard</a><span>Server-side providers</span></footer>
+          </section>
+        </main>
+      </div>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

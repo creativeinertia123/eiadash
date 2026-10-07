@@ -1,0 +1,23 @@
+{
+  "name": "cc-oil-terminal",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "npm@10.9.2",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "build": "vite build",
+    "start": "node server/index.js",
+    "dev": "npm run build && node server/index.js",
+    "zip:release": "mkdir -p release && find node_modules -type d \\( -name .cache -o -name .vite-temp \\) -prune -exec rm -rf {} + && rm -f release/cloris-commodity-dependencies.zip && zip -qr release/cloris-commodity-dependencies.zip Dockerfile index.html vite.config.js server src public dist package.json package-lock.json app.config.ts .gitignore README.md .env.example node_modules"
+  },
+  "dependencies": {
+    "chart.js": "4.4.8",
+    "dompurify": "3.2.6",
+    "dotenv": "16.4.7",
+    "express": "4.21.2",
+    "express-rate-limit": "7.5.0",
+    "marked": "15.0.12"
+  },
+  "devDependencies": { "vite": "6.1.0" }
+}
